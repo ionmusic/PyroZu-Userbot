@@ -102,11 +102,10 @@ async def ungban_user(client: Client, message: Message):
         Kazu = await message.edit("`UnGbanning....`")
     if not user_id:
         return await Kazu.edit("Saya tidak dapat menemukan pengguna itu.")
-    if user_id:
-        try:
-            user = await client.get_users(user_id)
-        except Exception:
-            return await Kazu.edit("`Harap tentukan pengguna yang valid!`")
+    try:
+        user = await client.get_users(user_id)
+    except Exception:
+        return await Kazu.edit("`Harap tentukan pengguna yang valid!`")
 
     try:
         if not sql.is_gbanned(user.id):
@@ -144,9 +143,7 @@ async def gbanlist(client: Client, message: Message):
     if not users:
         return await Kazu.edit("Belum Ada Jamet yang Di-Gban")
     gban_list = "**GBanned Users:**\n"
-    count = 0
-    for i in users:
-        count += 1
+    for count, i in enumerate(users, start=1):
         gban_list += f"**{count} -** `{i.sender}`\n"
     return await Kazu.edit(gban_list)
 
@@ -160,13 +157,13 @@ async def gmute_user(client: Client, message: Message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await Kazu.edit(f"`Please specify a valid user!`")
+            await Kazu.edit("`Please specify a valid user!`")
             return
     elif reply:
         user_id = reply.from_user.id
         user = await client.get_users(user_id)
     else:
-        await Kazu.edit(f"`Please specify a valid user!`")
+        await Kazu.edit("`Please specify a valid user!`")
         return
     if user.id == client.me.id:
         return await Kazu.edit("**Ngapain NgeGmute Diri Sendiri Pepek**")
@@ -208,13 +205,13 @@ async def ungmute_user(client: Client, message: Message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await Kazu.edit(f"`Please specify a valid user!`")
+            await Kazu.edit("`Please specify a valid user!`")
             return
     elif reply:
         user_id = reply.from_user.id
         user = await client.get_users(user_id)
     else:
-        await Kazu.edit(f"`Please specify a valid user!`")
+        await Kazu.edit("`Please specify a valid user!`")
         return
 
     try:
@@ -249,9 +246,7 @@ async def gmutelist(client: Client, message: Message):
     if not users:
         return await Kazu.edit("Belum Ada Jamet yang Di-Gmute")
     gmute_list = "**GMuted Users:**\n"
-    count = 0
-    for i in users:
-        count += 1
+    for count, i in enumerate(users, start=1):
         gmute_list += f"**{count} -** `{i.sender}`\n"
     return await Kazu.edit(gmute_list)
 
