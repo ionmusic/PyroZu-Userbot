@@ -15,7 +15,7 @@ class First:
 ✣ **Userbot Version :** `{}`
 ✣ **Group Support :** [Kazu Support](t.me/kazusupportgrp)
 ✣ **Channel Kazu :** [Kazu Session](t.me/Html12text)
-✣ **Owner Repo :** [Kazu](t.me/kenapatagkazu)
+✣ **Owner Repo :** [Kazu](t.me/disinikazu)
 ✣ **Repo :** [PyroZu-Userbot](https://github.com/ionmusic/PyroZu-Userbot)
 
 
